@@ -5,6 +5,7 @@
 import express, {Router, Request, Response} from 'express';
 import * as ItemService from './items.service';
 import { Item } from './item.interface';
+import { checkJwt } from '../midlleware/auth.middleware';
 
 /**
  * Router Definition
@@ -42,6 +43,16 @@ itemsRouter.get('/:id',async (req: Request, res: Response) => {
         res.status(500).send(error);
     }
 });
+
+
+/**
+ * protected routes
+ */
+
+// mount authorization middleware
+
+itemsRouter.use(checkJwt);
+
 
 // POST items
 
