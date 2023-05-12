@@ -60,7 +60,7 @@ export const updateItem = async (id: number, updatedItem: Item): Promise<Item | 
     return items[id];
 }
 
-const removeItem = async (id: number): Promise<null | void> => {
+export const removeItem = async (id: number): Promise<null | void> => {
     const item = findItem(id);
     if (!item) return null;
     delete items[id];
